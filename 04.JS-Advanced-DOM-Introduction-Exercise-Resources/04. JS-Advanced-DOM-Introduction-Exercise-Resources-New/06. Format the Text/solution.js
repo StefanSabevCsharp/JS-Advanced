@@ -1,18 +1,21 @@
 function solve() {
+
+
+  let text = document.getElementById("input").value;
+
+  text = text.split(".").filter(t => t.trim().length > 0).map(w => w + ".");
+  let output = document.getElementById("output");
   
-  let input = document.getElementById('input').textContent;
-  let output = document.getElementById('output');
-  let sentences = input.split('.').filter(x => x !== '');
-  const allSentences = [];
-  for (let i = 0; i < sentences.length; i += 3) {
-    let currentSentences = sentences.slice(i, i + 3);
-    allSentences.push(currentSentences);
-  }
-  for (let i = 0; i < allSentences.length; i++) {
-    let currentParagraph = document.createElement('p');
-    currentParagraph.textContent = allSentences[i].join('. ') + '.';
-    output.appendChild(currentParagraph);
+
+  while(text.length > 0){
+
+    let p = document.createElement("p");
+    let nextSentences = text.splice(0,3).join(" ");
+    p.textContent = nextSentences;
+    output.appendChild(p);
   }
 
-  
+
+  console.log(text);
+
 }
